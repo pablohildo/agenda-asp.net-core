@@ -1,0 +1,37 @@
+﻿@page
+@model Agenda2.Pages.Eventos.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Evento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Evento.Titulo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Evento.Titulo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Evento.DataInicio)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Evento.DataInicio)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Evento.DataFim)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Evento.DataFim)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Evento.Id">Editar</a> |
+    <a asp-page="./Index">Voltar à Listagem</a>
+</div>

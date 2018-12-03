@@ -1,0 +1,83 @@
+﻿@page
+@model Agenda2.Pages.Eventos.IndexModel
+
+@{
+    ViewData["Title"] = "Início";
+}
+@section CSS{
+    <link rel="stylesheet" href="~/lib/fullcalendar/fullcalendar.css" />
+}
+<h2>Início</h2>
+
+<p>
+    <a asp-page="Create">Adicionar Evento</a>
+</p>
+<div id="calendar"></div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Evento[0].Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Evento[0].DataInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Evento[0].DataFim)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Evento)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataInicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataFim)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Detalhes</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts{
+    <script src="~/lib/fullcalendar/moment.min.js"></script>
+    <script src="~/lib/fullcalendar/fullcalendar.js"></script>
+    <script src="~/lib/fullcalendar/calendar-pt-br.js"></script>
+    <script>
+
+    var eventsData = [];
+    @foreach(var item in Model.Evento)
+    {
+        <Text>
+        eventsData.push({
+            title: "@item.Titulo",
+            start: "@item.DataInicio.ToString("yyyy-MM-dd")",
+            end: "@item.DataFim.ToString("yyyy-MM-dd")"
+        });
+    </Text>
+    }
+            $(document).ready(function() {
+                $('#calendar').fullCalendar({
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,agendaWeek,agendaDay,listMonth'
+                    },
+                    buttonIcons: false,
+                    events: eventsData
+                });
+                $('#calendar').fullCalendar( 'gotoDate', '{{$data}}');
+            });
+    </script>
+}

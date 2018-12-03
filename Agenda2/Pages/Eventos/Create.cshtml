@@ -1,0 +1,55 @@
+﻿@page
+@model Agenda2.Pages.Eventos.CreateModel
+
+@{
+    ViewData["Title"] = "Adicionar";
+}
+
+@section CSS{
+    <style>
+        .datepicker{
+            z-index: 9999 !important;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
+}
+
+<h2>Adicionar</h2>
+
+<h4>Evento</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Evento.Titulo" class="control-label"></label>
+                <input asp-for="Evento.Titulo" class="form-control" />
+                <span asp-validation-for="Evento.Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Evento.DataInicio" class="control-label"></label>
+                <input asp-for="Evento.DataInicio" class="form-control datetimepicker" data-date-format="dd-mm-yyyy" />
+                <span asp-validation-for="Evento.DataInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Evento.DataFim" class="control-label"></label>
+                <input asp-for="Evento.DataFim" class="form-control datetimepicker" data-date-format="dd-mm-yyyy" />
+                <span asp-validation-for="Evento.DataFim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Adicionar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Voltar à Listagem</a>
+</div>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+    <script>$('.datetimepicker').datepicker({language: 'pt-BR'});</script>
+}

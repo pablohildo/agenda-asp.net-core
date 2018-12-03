@@ -17,7 +17,6 @@ namespace Agenda2.Models
 
         public virtual DbSet<Evento> Evento { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
-        public virtual DbSet<UsuarioEvento> UsuarioEvento { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -68,23 +67,6 @@ namespace Agenda2.Models
                     .IsRequired()
                     .HasColumnName("senha")
                     .HasColumnType("varchar(200)");
-            });
-
-            modelBuilder.Entity<UsuarioEvento>(entity =>
-            {
-                entity.ToTable("usuario_evento");
-
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("int(11)");
-
-                entity.Property(e => e.EventoId)
-                    .HasColumnName("evento_id")
-                    .HasColumnType("int(11)");
-
-                entity.Property(e => e.UsuarioId)
-                    .HasColumnName("usuario_id")
-                    .HasColumnType("int(11)");
             });
         }
     }
