@@ -27,7 +27,7 @@ namespace Agenda2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<agendaContext>(
-                options => options.UseMySql("Server=localhost;Database=agenda;User=root;Password=mozo1506;",
+                options => options.UseMySql("Server=localhost;Database=agenda;User=root;Password=;",
                 mySqlOptions => { mySqlOptions.ServerVersion(new Version(5, 7, 22), Pomelo.EntityFrameworkCore.MySql.Infrastructure.ServerType.MySql); }
             ));
 
