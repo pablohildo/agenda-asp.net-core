@@ -22,7 +22,7 @@ namespace Agenda2.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("Server=localhost;Database=agenda;User=root;Password=;");
+                optionsBuilder.UseMySql("Server=localhost;Database=agenda;User=root;Password=mozo1506;");
             }
         }
 
